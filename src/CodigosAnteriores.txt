@@ -1,0 +1,177 @@
+SOLUCIONANDO ERRORES DE PAGINA WEB
+
+CODIGO IMPORTANTE
+
+//Menu de navegacion
+<div className="container-fluid bg-danger py-3 fixed-top">
+          <nav className="borde navbar navbar-expand-lg navbar-light bg-light">
+            <a className="navbar-brand text-danger" href="#">
+              FreeMotors
+            </a>
+            <button
+              className="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span className="navbar-toggler-icon"></span>
+            </button>
+
+            <div
+              className="collapse navbar-collapse"
+              id="navbarSupportedContent"
+            >
+              <ul className="navbar-nav mr-auto">
+                <li className="nav-item">
+                  <a className="nav-link">Motocross</a>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link">Deportivas</a>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link">Scooter</a>
+                </li>
+              </ul>
+              <form className="form-inline my-2 my-lg-0">
+                <input
+                  className="form-control mr-sm-2"
+                  type="search"
+                  placeholder="Buscar"
+                  aria-label="Search"
+                />
+                <button
+                  className="btn btn-outline-danger my-2 my-sm-0"
+                  type="submit"
+                >
+                  Buscar
+                </button>
+              </form>
+            </div>
+          </nav>
+</div>
+
+//Pagina de inicio
+
+PARTE 1:
+
+import React from "react";
+import "./MotosInfo.css";
+var descripcionView = "Descripción";
+export default class MotosInfo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      mostrar: false,
+    };
+    this.toggleMostrar = this.toggleMostrar.bind(this);
+  }
+
+  toggleMostrar() {
+    this.setState((prevState) => ({
+      mostrar: !prevState.mostrar,
+    }));
+  }
+  render() {
+    return (
+      <>
+        <div className="row bg-light p-3 borde">
+          <div className="col-12 col-md-6  text-center text-dark d-md-flex align-items-center">
+            <h2>{this.props.titulo}</h2>
+          </div>
+          <div className="col-12 col-md-6 text-center d-md-flex justify-content-md-end">
+            <img
+              className="bg-light p-2 borde mb-1 imagenBig"
+              width="300"
+              height="200s"
+              src={this.props.img}
+              alt={this.props.alt}
+            /> 
+            <img
+              className="d-none d-md-block bg-light p-2 borde mb-1 imagenBig"
+              width="300"
+              height="200s"
+              src={this.props.img2}
+              alt={this.props.alt}
+            />
+            <img
+              className="d-none d-md-block bg-light p-2 borde mb-1 imagenBig"
+              width="300"
+              height="200s"
+              src={this.props.img3}
+              alt={this.props.alt}
+            />
+          </div>
+          <div className="col-12 d-flex justify-content-center justify-content-md-start">
+          <a
+            className="btn btn-outline-danger text-dark manita"
+            onClick={this.toggleMostrar}
+          >
+            {descripcionView}
+          </a>
+          </div>
+          <div
+            className={
+              "d-none col-12 text-dark " +
+              (this.state.mostrar ? "d-flex" : "")
+            }
+          >
+            <p className="mr-md-5 pr-md-5 bg-light p-2 borde">
+              {this.props.descripcion}
+            </p>
+          </div>
+        </div>
+      </>
+    );
+  }
+}
+
+PARTE 2:
+<div className="container-fluid bg-danger p-4">
+            <MotosInfo
+              titulo="RIEJU MARATHON 125 PRO"
+              img="/img/moto01.jpg"
+              img2="/img/moto01.2.jpg"
+              img3="/img/moto01.3.jpg"
+              alt="Moto"
+              descripcion="La Rieju Marathon 125 Pro es una trail enduro desarrollada para disfrutar en el off-road gracias a su potente motor y a su completa parte ciclo. El propulsor empleado es un Minarelli de refrigeración líquida, de cuatro válvulas y arranque eléctrico que proporciona la suficiente potencia para lograr un alto nivel de diversión, pero sin resultar excesivamente potente como para asustar a los pilotos con menos experiencia.Emplea un chasis de doble viga de acero junto a unas suspensiones bien planteadas. Delante, una horquilla invertida R16V con barras de 41 mm; detrás, un monoamortiguador con depósito de gas separado. Los frenos son Galfer Wave, el delantero de 300 mm y pinzas de doble pistón."
+            />
+            <br />
+            <MotosInfo
+              titulo="HONDA CB650R"
+              img="/img/moto02.jpg"
+              img2="/img/moto02.2.jpg"
+              img3="/img/moto02.3.jpg"
+              alt="Moto"
+              descripcion="Honda refresca y dota de más tecnología a la CB650R 2024, su naked limitable para el carnet A2, con el objetivo de que sea una de las propuestas más atractivas del segmento. Y hace hincapié en en que esto sea así dotándola de su último y más sofisticado sistema de transmisión denominado E-Clutch, toda una revolución ya que ser trata de un cambio automático para motos de marchas. Tenemos por tanto una moto de estilo contemporáneo que destila buen gusto y deportividad gracias a una parte ciclo de contrastada calidad y a un motor 'tetra' de interesantes prestaciones. "
+            />
+            <br />
+            <MotosInfo
+              titulo="YAMAHA YZF-R7"
+              img="/img/moto03.jpg"
+              img2="/img/moto03.2.jpg"
+              img3="/img/moto03.3.jpg"
+              alt="Moto"
+              descripcion="La Yamaha YZF-R7 es la deportiva de la marca japonesa que aprovecha el versátil motor CP2 de 689 cc que se utiliza en la MT-07, Tenere 700, XSR700 y Tracer 700. Se trata de una montura que mantiene la estética de la familia YZF-R de la marca japonesa pero que dinámicamente es bastante más apta para pilotos con menos experiencia aunque con ganas de disfrutar de la deportividad de una moto así. Se ofrece una versión de 35 kW para los usuarios del carnet A2. En 2023 se mantiene sin cambios con respecto a la versión precedente, desapareciendo de la oferta la versión 60º Aniversario con la que conmemoraron (en 2022) los 60 años de Yamaha en los mundiales de velocidad."
+            />
+          </div>
+
+PAGINA INICIO CSS:
+
+.borde{
+    border-radius: 8px;
+}
+.margen{
+    margin-right: 100px;
+}
+.imagenBig:hover{
+    width: 400px;
+    height: 300px;
+    transition: 0.5s;
+    cursor: pointer;
+}
+.manita{
+    cursor: pointer;
+}
